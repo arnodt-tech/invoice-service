@@ -1,6 +1,5 @@
 package za.co.digitalplatform.invoiceservice.controllers;
 
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +19,7 @@ public class InvoiceController {
     private InvoiceRepository invoiceRepository;
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<Invoice> addInvoice(@Validated  @RequestBody Invoice invoice) {
+    public ResponseEntity<Invoice> addInvoice(@Validated @RequestBody Invoice invoice) {
         invoice = invoiceRepository.saveAndFlush(invoice);
 
         return new ResponseEntity<>(invoice, HttpStatus.CREATED);

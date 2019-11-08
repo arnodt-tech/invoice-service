@@ -29,10 +29,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class InvoiceControllerIntegrationTest {
 
+    private static final ObjectMapper MAPPER = new ObjectMapper();
     @Autowired
     private MockMvc mockMvc;
-
-    private static final ObjectMapper MAPPER = new ObjectMapper();
 
     public static String requestBody(Object request) {
         try {
@@ -51,7 +50,7 @@ public class InvoiceControllerIntegrationTest {
         }
     }
 
-    private LineItem createLineItem(String description, Long quantity, Double unitPrice){
+    private LineItem createLineItem(String description, Long quantity, Double unitPrice) {
         LineItem lineItem = new LineItem();
         lineItem.setQuantity(quantity);
         lineItem.setUnitPrice(BigDecimal.valueOf(unitPrice));
@@ -67,10 +66,9 @@ public class InvoiceControllerIntegrationTest {
         invoice.setClient("Client01");
         invoice.setVatRate(15L);
         invoice.setInvoiceDate(Calendar.getInstance().getTime());
-        invoice.getLineItems().add(createLineItem("Item01",2L,12.5));
-        invoice.getLineItems().add(createLineItem("Item02",4L,6.25));
-        invoice.getLineItems().add(createLineItem("Item03",3L,1.24));
-
+        invoice.getLineItems().add(createLineItem("Item01", 2L, 12.5));
+        invoice.getLineItems().add(createLineItem("Item02", 4L, 6.25));
+        invoice.getLineItems().add(createLineItem("Item03", 3L, 1.24));
 
 
         try {
@@ -83,9 +81,9 @@ public class InvoiceControllerIntegrationTest {
 
 
             Assertions.assertNotNull(invoiceResponse.getClient());
-            Assertions.assertEquals(invoice.getClient(),invoiceResponse.getClient());
-            Assertions.assertEquals(invoice.getVatRate(),invoiceResponse.getVatRate());
-            Assertions.assertEquals(invoice.getInvoiceDate(),invoiceResponse.getInvoiceDate());
+            Assertions.assertEquals(invoice.getClient(), invoiceResponse.getClient());
+            Assertions.assertEquals(invoice.getVatRate(), invoiceResponse.getVatRate());
+            Assertions.assertEquals(invoice.getInvoiceDate(), invoiceResponse.getInvoiceDate());
             Assertions.assertEquals(invoice.getLineItems().size(), 3);
             Assertions.assertTrue(BigDecimal.valueOf(53.72).compareTo(invoiceResponse.getSubTotal()) == 0);
             Assertions.assertTrue(BigDecimal.valueOf(8.06).compareTo(invoiceResponse.getVat()) == 0);
@@ -121,7 +119,6 @@ public class InvoiceControllerIntegrationTest {
             Assertions.assertTrue(!errorDetail.getErrors().isEmpty());
 
 
-
             Assertions.assertTrue(true);
         } catch (Exception e) {
             Assertions.assertTrue(false);
@@ -149,7 +146,6 @@ public class InvoiceControllerIntegrationTest {
             Assertions.assertEquals(errorDetail.getStatus(), HttpStatus.BAD_REQUEST.value());
             Assertions.assertNotNull(errorDetail.getErrors());
             Assertions.assertTrue(!errorDetail.getErrors().isEmpty());
-
 
 
             Assertions.assertTrue(true);

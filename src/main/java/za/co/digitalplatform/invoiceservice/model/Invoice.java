@@ -1,6 +1,8 @@
 package za.co.digitalplatform.invoiceservice.model;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -66,7 +68,7 @@ public class Invoice {
     @ApiModelProperty(readOnly = true, accessMode = ApiModelProperty.AccessMode.READ_ONLY)
     @JsonProperty
     public BigDecimal getVat() {
-        return BigDecimalUtils.multiply(getSubTotal(), vatRate/100.0);
+        return BigDecimalUtils.multiply(getSubTotal(), vatRate / 100.0);
     }
 
     @ApiModelProperty(readOnly = true, accessMode = ApiModelProperty.AccessMode.READ_ONLY)

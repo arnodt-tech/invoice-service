@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 public class LineItemUnitTest {
 
     @Test
-    public void lineItemTotal_validate_calculation(){
+    public void lineItemTotal_validate_calculation() {
         LineItem lineItem = new LineItem();
 
         lineItem.setQuantity(10L);
@@ -18,7 +18,7 @@ public class LineItemUnitTest {
     }
 
     @Test
-    public void lineItemTotal_validate_calculation_rounding_middle(){
+    public void lineItemTotal_validate_calculation_rounding_middle() {
         LineItem lineItem = new LineItem();
 
         lineItem.setQuantity(5L);
@@ -28,7 +28,7 @@ public class LineItemUnitTest {
     }
 
     @Test
-    public void lineItemTotal_validate_calculation_rounding_bottom(){
+    public void lineItemTotal_validate_calculation_rounding_bottom() {
         LineItem lineItem = new LineItem();
 
         lineItem.setQuantity(4L);
@@ -38,7 +38,7 @@ public class LineItemUnitTest {
     }
 
     @Test
-    public void lineItemTotal_validate_calculation_rounding_top(){
+    public void lineItemTotal_validate_calculation_rounding_top() {
         LineItem lineItem = new LineItem();
 
         lineItem.setQuantity(6L);

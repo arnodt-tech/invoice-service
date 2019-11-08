@@ -1,13 +1,12 @@
 package za.co.digitalplatform.invoiceservice.model;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
 
 public class BigDecimalUtils {
 
     static public BigDecimal applyRounding(BigDecimal value) {
-        return value.setScale(2,RoundingMode.HALF_UP);
+        return value.setScale(2, RoundingMode.HALF_UP);
     }
 
     static public BigDecimal multiply(BigDecimal value1, BigDecimal value2) {
